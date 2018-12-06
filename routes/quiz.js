@@ -14,9 +14,9 @@ router.get("/getQuestions",(req,res,next)=>{
         .sort("difficulty")
         .exec((err, qs)=>{
             if(err)
-                return next(err);
+                next(err);
             res.json(qs);
-        }).catch(next);
+        });
     
 });
 
@@ -27,7 +27,7 @@ router.post("/answers",(req,res,next)=>{
     if(!req.session.user)
         return next(new Error("Session expired"));
 
-    users.findOneAndUpdate({regno:req.session.user.regno},{
+    users.findOneAndUpdate({regno:"17BCE2009"},{
         $push:{
             test:{
                 question:req.body.question,
