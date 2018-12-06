@@ -16,9 +16,23 @@ router.post("/record", (req,res,next)=>{
     if(!req.body.phno.match(/^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/))
         return res.json({message:"Phone number invalid format"});
     
+    let domain='';
+    if(req.body.management)
+        domain="management";
+    else if(req.body.technical)
+        domain="technical";
+    else if(req.body.design)
+        domain="design";
+    else if(req.body.content_writing)
+        domain="content_writing";
 
+        
     users.create(req.body)
     .then((ud)=>{
+        req.session.user = {
+            regno: ud.regno,
+            domain
+        }
         res.json(ud);
     })
     .catch(next);

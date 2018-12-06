@@ -9,9 +9,10 @@ app.use(cors());
 app.use(bp.json());
 app.use(bp.urlencoded({extended:false}));
 app.use(session({
-    secret: process.env.CAPTSECRET,
+    secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie:{maxAge:1000}
 }))
 
 app.use(express.static("frontend"))
@@ -21,11 +22,10 @@ mongoose.connection.once("open",()=>console.log("connected"))
 .on("error",()=>console.log("error connecting to db"));
 
 
-
-
 app.get("/",(req,res,next)=>{
-    res.sendFile(__dirname + "/frontend/index.html");
+    res.sendFile(__dirname+"/frontend/main.html")
 });
+
 
 app.use("/",require("./routes/user"));
 app.use("/",require("./routes/admin"));

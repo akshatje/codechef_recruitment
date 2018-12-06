@@ -5,8 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-    <h1>hi</h1>
+    <button id="start">start</button>
+    <div id="qs">
+            <h1>hi</h1>
+            <input type="text" name="answer" id="" placeholder="answer">
+            <button id="submit">submit</button>
+    </div>
+
+    <script>
+        $("#qs").hide();
+        $("#start").on("click",(e)=>{
+            e.preventDefault();
+            $.get("/getqs", (data, status)=>{
+                $("#start").hide();
+                $("#qs").show();
+                $("h1").html(data.message);
+
+                $.get("/timer",(data, status)=>{
+                    $("#qs").html(data);
+                })
+            })
+        })
+    </script>
 </body>
 </html>
