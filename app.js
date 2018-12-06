@@ -29,6 +29,7 @@ app.get("/",(req,res,next)=>{
 
 app.use("/",require("./routes/user"));
 app.use("/",require("./routes/admin"));
+app.use("/",require("./routes/quiz"));
 
 app.use((err,req,res,next)=>{
     console.log(err);

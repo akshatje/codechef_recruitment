@@ -1,22 +1,41 @@
 const router = require("express").Router();
+const {
+    questions,
+    users
+} = require("../schema");
 
 
 router.get("/getQuestions",(req,res,next)=>{
     if(!req.session.user)
         return next(new Error("Session expired"));
     
-        // query db
-        // send questions
+        questions.find({domain:req.session.user.domain})
+        .then((qs)=>{
+            res.json(qs)
+        }).catch(next);
     
 });
+
+
+
 
 router.post("/answers",(req,res,next)=>{
     if(!req.session.user)
         return next(new Error("Session expired"));
 
-    // update db with answers
-    // redirect to required route 
+    users.findOneAndUpdate({regno:req.session.user.regno},{
+        $push:{
+            test:{
+                question:req.body.question,
+                answer:req.body.answer
+            }
+        }
+    }).then(()=>{
+        return res.send("Done");
+    }).catch(next);
 });
+
+
 
 
 
@@ -30,6 +49,8 @@ router.get("/timerAcknowledge",(req,res,next)=>{
     },2000);
 });
 
+
+module.exports = router;
 
 /**
  * 

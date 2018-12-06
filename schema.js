@@ -74,3 +74,9 @@ module.exports.users = mongoose.model("user", new mongoose.Schema({
         default: []
     }
 }))
+
+
+module.exports.questions = mongoose.model("question", new mongoose.Schema({
+    question:String,
+    domain:String
+}))
