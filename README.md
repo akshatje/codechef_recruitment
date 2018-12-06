@@ -26,7 +26,6 @@ Record and show recruitment details
         "video": false
     },
     "sub_management": {
-        "writer": false,
         "manager": false
     },
     "sub_technical": {
@@ -37,21 +36,18 @@ Record and show recruitment details
         "android": false,
         "general": false
     },
-    "answers": {
-        "answerone": "aaaaa",
-        "answertwo": "bbbb",
-        "answerthree": "cccc",
-        "answerfour": "dddd",
-        "answerfive": "eeeee"
+    "test":{
+        "question":"q1",
+        "answer":"a1"
     },
     "technical": true,
     "design": false,
     "management": false,
     "_id": "5c08f9e9bed9e45a40de026c",
-    "firstName": "angad sharma",
-    "registrationNumber": "17BCE2009",
-    "phoneNumber": "1111111111",
-    "emailAddress": "sadsda@l.com",
+    "name": "angad sharma",
+    "regno": "17BCE2009",
+    "phno": "1111111111",
+    "email": "sadsda@l.com",
     "__v": 0
 }
 
