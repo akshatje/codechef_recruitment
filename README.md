@@ -1,5 +1,5 @@
-## DSC Recruitment portal
-Record and show recruitment details
+## Codechef Recruitment portal
+Record and show recruitment details as well as quiz
 
 <br />
 
