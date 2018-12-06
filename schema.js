@@ -78,5 +78,6 @@ module.exports.users = mongoose.model("user", new mongoose.Schema({
 
 module.exports.questions = mongoose.model("question", new mongoose.Schema({
     question:String,
-    domain:String
+    domain:String,
+    difficulty:Number
 }))

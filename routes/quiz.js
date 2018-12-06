@@ -10,8 +10,12 @@ router.get("/getQuestions",(req,res,next)=>{
         return next(new Error("Session expired"));
     
         questions.find({domain:req.session.user.domain})
-        .then((qs)=>{
-            res.json(qs)
+        .limit(20)
+        .sort("difficulty")
+        .exec((err, qs)=>{
+            if(err)
+                return next(err);
+            res.json(qs);
         }).catch(next);
     
 });
