@@ -3,6 +3,7 @@ var des = localStorage.getItem('design');
 var mgt = localStorage.getItem('management');
 var edi = localStorage.getItem('editorial');
 var tech = localStorage.getItem('technical');
+console.table(des,mgt,edi,tech)
 function populate() {
     if(quiz.isEnded()) {
         showScores();
@@ -75,37 +76,37 @@ var design = [
     new Question("Which language is used for web apps?", ["PHP", "Python", "Javascript", "All"], "All"),
     new Question("MVC is a ____.", ["Language", "Library", "Framework", "All"], "Framework")
 ];
- var quiz=[]
+ var questions=[]
 function mergeobject(){
     
     if (des)
         {
         for (i=0; i<design.length; i++) 
-            {quiz.push(i);  }
+            {questions.push(i);  }
         }
         
     if (tech)
         {
         for (i=0; i<technical.length; i++) 
         { 
-            {quiz.push(i);  }
+            {questions.push(i);  }
         }}
 
     if(mgt)
         {
         for ( i=0; i<management.length; i++)
         { 
-            {quiz.push(i);  }
+            {questions.push(i);  }
         }}
 
     if (edi)
         {
         for ( i=0; i<editorial.length; i++) 
-            {quiz.push(i);  }
+            {questions.push(i);  }
         }
     }
 // create quiz
-var quiz = new Quiz(quiz.questions);
+var quiz = new Quiz(questions);
 
 // display quiz
 populate();
