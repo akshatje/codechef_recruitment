@@ -11,11 +11,12 @@ app.use(bp.urlencoded({extended:false}));
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: true,
-    cookie:{maxAge:1000}
+    saveUninitialized: true
 }))
 
-app.use(express.static("frontend"))
+app.set("view engine","ejs")
+app.use(express.static("static"))
+
 
 mongoose.connect(process.env.DBURL, {useNewUrlParser: true});
 mongoose.connection.once("open",()=>console.log("connected"))
@@ -23,7 +24,7 @@ mongoose.connection.once("open",()=>console.log("connected"))
 
 
 app.get("/",(req,res,next)=>{
-    res.sendFile(__dirname+"/frontend/main.html")
+    res.render("main")
 });
 
 
