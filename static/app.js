@@ -81,27 +81,27 @@ function mergeobject(){
     
     if (des)
         {
-        for (i=0; i<design.length; i++) 
+        for (let i=0; i<design.length; i++) 
             {questions.push(i);  }
         }
         
     if (tech)
         {
-        for (i=0; i<technical.length; i++) 
+        for (let i=0; i<technical.length; i++) 
         { 
             {questions.push(i);  }
         }}
 
     if(mgt)
         {
-        for ( i=0; i<management.length; i++)
+        for (let i=0; i<management.length; i++)
         { 
             {questions.push(i);  }
         }}
 
     if (edi)
         {
-        for ( i=0; i<editorial.length; i++) 
+        for (let i=0; i<editorial.length; i++) 
             {questions.push(i);  }
         }
     }
