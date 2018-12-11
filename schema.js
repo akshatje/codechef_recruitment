@@ -6,6 +6,8 @@ module.exports.users = mongoose.model("user", new mongoose.Schema({
     phno       : String,
     email  : String,
     gender:String,
+    block:String,
+    gender:String,
     technical : {
         type: Boolean,
         default: false
