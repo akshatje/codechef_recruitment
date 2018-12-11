@@ -252,12 +252,12 @@
 				<!-- contact form -->
 				<div class="col-md-8 col-md-offset-2">
 					<form class="contact-form" action="/record" method="post">
-						<input type="text" class="input" name="name" placeholder="Name">
-						<input type="text" class="input" name="regno" placeholder="Registration Number">
-						<input type="text" class="input" name="email" placeholder="Your VIT Email ID">
-						<input type="text" class="input" name="phno" placeholder="Your Whatsapp Number">
-						<input type="text" class="input" name="block" placeholder="Block and Room number">
-						<select name="gender" style="width:100%">
+						<input type="text" class="input" name="name" id="name" placeholder="Name" required>
+						<input type="text" class="input" name="regno" id="regno" placeholder="Registration Number" required>
+						<input type="email" class="input" name="email" id="email" placeholder="Your VIT Email ID" required>
+						<input type="text" class="input" name="phno" id="phno" placeholder="Your Whatsapp Number" required>
+						<input type="text" class="input" name="block" id="block" placeholder="Block and Room number" required>
+						<select name="gender" id="gender" style="width:100%">
 							<option>Gender</option>
 							<option>Male</option>
 							<option>Female</option>
@@ -341,6 +341,26 @@
 	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
 	<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+
+	<script>
+		$("#submit").on("click",(e)=>{
+			e.preventDefault();
+
+			$.post("/record", {
+				name:$("#name").val(),
+				phno:$("#phno").val(),
+				regno:$("#regno").val(),
+				block:$("#block").val(),
+				gender:$("#gender").val(),
+				email:$("#email").val()
+			},(resp)=>{
+				if(resp.message)
+					alert(resp.message);
+				else	
+					window.location.replace("/domain");
+			})
+		})
+	</script>
 
 </body>
 

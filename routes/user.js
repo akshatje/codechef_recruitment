@@ -7,7 +7,7 @@ router.post("/record", (req,res,next)=>{
     //     !req.body.phno)
     //     return res.json({message:"No fields should be empty"});
 
-    // if(!req.body.regno.match(/^1[5-9]...[0-9][0-9][0-9][0-9]$/))
+    // if(!req.body.regno.match(/^18...[0-9][0-9][0-9][0-9]$/))
     //     return res.json({message:"Registration number invalid format"});
     // if(!req.body.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))
     //     return res.json({message:"Email address invalid format"});
@@ -29,13 +29,13 @@ router.post("/record", (req,res,next)=>{
         
     users.findOne({regno:req.body.regno})
     .then((u)=>{
-        if(true/*correct this*/ ){
+        if(!u){
             users.create(req.body)
             .then((ud)=>{
                 req.session.user=ud.regno
                 console.log(req.session.user)
 
-                res.render("domain");
+                res.send("done");
             })
             .catch(next);
         }
@@ -49,6 +49,13 @@ router.get("/quiz",(req,res,next)=>{
     if(!req.session.user)
         return res.redirect("/");
     res.render("index");
+})
+
+
+router.get("/domain",(req,res,next)=>{
+    if(!req.session.user)
+        return res.redirect("/");
+    res.render("domain");
 })
 
 

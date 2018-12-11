@@ -1,4 +1,5 @@
 $(".final-submit").on("click", (e)=>{
+    console.log("clicasnmkc")
     e.preventDefault();
     let answers = [];
 
@@ -22,11 +23,17 @@ $(".final-submit").on("click", (e)=>{
     let management = localStorage.getItem("management");
     let content_writing = localStorage.getItem("documentation");
     
-    $.post("/answers", {answers:answers, technical, design, management, content_writing}, (resp)=>{
-        if(resp.message)
-            alert(resp.message);
-        else{
-            console.log(resp)
+    $.ajax({
+        url:"/answers",
+        data:JSON.stringify({answers, technical, design, management, content_writing}),
+        type:"post",
+        contentType:"application/json",
+        success:(resp)=>{
+            if(resp.message)
+                alert(resp.message);
+            else{
+                console.log(resp)
+            }
         }
-    });
+    })
 })
