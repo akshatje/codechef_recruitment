@@ -50,14 +50,14 @@ router.post("/answers",(req,res,next)=>{
 
 
 
-router.get("/timerAcknowledge",(req,res,next)=>{
+router.post("/timerAcknowledge",(req,res,next)=>{
     if(!req.session.user)
         return next(new Error("Session expired"));
 
     setTimeout(()=>{
         req.session.user=null;
         return res.send("Quiz over")
-    },2000);
+    },req.body.count*30*60*1000);
 });
 
 

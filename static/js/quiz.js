@@ -1,3 +1,12 @@
+$(document).ready(()=>{
+    $.post("/timerAcknowledge",{count:localStorage.getItem("count")},(resp)=>{
+        alert(resp);
+        $("body").html('');
+        window.location.replace("/");
+    })
+})
+
+
 $(".final-submit").on("click", (e)=>{
     console.log("clicasnmkc")
     e.preventDefault();
@@ -32,7 +41,9 @@ $(".final-submit").on("click", (e)=>{
             if(resp.message)
                 alert(resp.message);
             else{
-                console.log(resp)
+                alert("Exam successfully saved");
+                $("body").html('');
+                window.location.replace("/");
             }
         }
     })
