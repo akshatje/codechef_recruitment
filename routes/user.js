@@ -48,6 +48,7 @@ router.post("/record", (req,res,next)=>{
 router.get("/quiz",(req,res,next)=>{
     if(!req.session.user)
         return res.redirect("/");
+    res.setHeader("Cache-Control","no-store");  
     res.render("index");
 })
 

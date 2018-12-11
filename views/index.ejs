@@ -193,29 +193,30 @@ background-repeat: no-repeat;">${e}</p>
 
 }
 
+ $("#qs").html('');
 
-if(tech)
+if(tech=="true")
 {
   technical.forEach((e, i)=>{
     $("#qs").append(fn(e, i));
   })
 }
 
-if(mgt)
+if(mgt=="true")
 {
   management.forEach((e, i)=>{
     $("#qs").append(fn(e, i));
   })
 }
 
-if(des)
+if(des=="true")
 {
   design.forEach((e, i)=>{
     $("#qs").append(fn(e, i));
   })
 }
 
-if(doc)
+if(doc=="true")
 {
   editorial.forEach((e, i)=>{
     $("#qs").append(fn(e, i));

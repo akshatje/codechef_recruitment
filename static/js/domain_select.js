@@ -1,10 +1,10 @@
 localStorage.clear();
 let technical=false, management = false, design = false, documentation = false;
 
-localStorage.setItem("technical",technical) 
-localStorage.setItem("design",design)
-localStorage.setItem("management",management)
-localStorage.setItem("documentation",documentation)
+localStorage.setItem("technical",false) 
+localStorage.setItem("design",false)
+localStorage.setItem("management",false)
+localStorage.setItem("documentation",false)
 
 
 $("#technical").on("click",()=>{
