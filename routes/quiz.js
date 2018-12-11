@@ -57,7 +57,7 @@ router.post("/timerAcknowledge",(req,res,next)=>{
 
     setTimeout(()=>{
         return res.send("Quiz over")
-    },10000);//req.body.count*30*60*1000
+    },req.body.count*30*60*1000);
 });
 
 
