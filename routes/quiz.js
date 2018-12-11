@@ -34,9 +34,13 @@ router.post("/answers",(req,res,next)=>{
 
         if(u.test.length > 0)
             return res.json({message:"User has already responded"})
-        
+        console.log(req.body)
         users.findOneAndUpdate({regno:req.session.user},{
-            test:req.body.answers
+            test:req.body.answers,
+            technical:req.body.technical,
+            design:req.body.design,
+            management:req.body.management,
+            content_writing:req.body.content_writing
         }).then(()=>{
             return res.send("Done");
         }).catch(next);
