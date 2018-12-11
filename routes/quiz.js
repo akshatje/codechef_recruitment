@@ -41,6 +41,7 @@ router.post("/answers",(req,res,next)=>{
             content_writing:req.body.content_writing,
             $push: {test: {$each: req.body.answers}}
         }).then(()=>{
+            req.session.user=null;
             return res.send("Done");
         }).catch(next);
     }).catch(next);
@@ -55,9 +56,8 @@ router.post("/timerAcknowledge",(req,res,next)=>{
         return next(new Error("Session expired"));
 
     setTimeout(()=>{
-        req.session.user=null;
         return res.send("Quiz over")
-    },req.body.count*30*60*1000);
+    },10000);//req.body.count*30*60*1000
 });
 
 
