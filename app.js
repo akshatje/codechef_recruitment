@@ -28,7 +28,13 @@ app.get("/",(req,res,next)=>{
 });
 
 app.get("/quiz",(req,res,next)=>{
+    if(!req.session.user)
+        return res.redirect("/")
     res.render("index")
+});
+
+app.get("/admin",(req,res,next)=>{
+    res.render("admin")
 });
 
 app.use("/",require("./routes/user"));

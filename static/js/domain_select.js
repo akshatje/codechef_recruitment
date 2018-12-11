@@ -1,5 +1,6 @@
-let technical=false, management = false, design = false, documentation = false;
 localStorage.clear();
+let technical=false, management = false, design = false, documentation = false;
+
 
 
 
@@ -81,5 +82,5 @@ $("#domain_sub").on("click", (e)=>{
     if(!documentation)
         count--;
     localStorage.setItem("count", count);
-    window.location.href("/quiz");
+    window.location.replace("/quiz");
 })
