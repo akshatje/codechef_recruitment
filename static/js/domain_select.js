@@ -71,10 +71,15 @@ $("#documentation").on("click",()=>{
 
 $("#domain_sub").on("click", (e)=>{
     e.preventDefault();
-    console.log({
-        technical,
-        design,
-        management,
-        documentation
-    })
+    let count = 4;
+    if(!technical)
+        count--;
+    if(!management)
+        count--;
+    if(!design)
+        count--;
+    if(!documentation)
+        count--;
+    localStorage.setItem("count", count);
+    window.location.href("/quiz");
 })

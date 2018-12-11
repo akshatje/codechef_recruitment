@@ -24,49 +24,6 @@ module.exports.users = mongoose.model("user", new mongoose.Schema({
         type:Boolean,
         default: true
     },
-    sub_design:{
-        uiux : {
-            type: Boolean,
-            default: false
-        },
-        graphic : {
-            type: Boolean,
-            default: false
-        },
-        video : {
-            type: Boolean,
-            default: false
-        }
-    },
-    
-    sub_technical:{
-        machinelearning : {
-            type: Boolean,
-            default: false
-        },
-        frontend : {
-            type: Boolean,
-            default: false
-        },
-        backend : {
-            type: Boolean,
-            default: false
-        },
-        python : {
-            type: Boolean,
-            default: false
-        },
-        android: {
-            type: Boolean,
-            default: false
-        },
-        coding : {
-            type: Boolean,
-            default: false
-        },
-        others: String
-    },
-    
 
     test: {
         type:[{

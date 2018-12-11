@@ -27,6 +27,9 @@ app.get("/",(req,res,next)=>{
     res.render("main")
 });
 
+app.get("/quiz",(req,res,next)=>{
+    res.render("index")
+});
 
 app.use("/",require("./routes/user"));
 app.use("/",require("./routes/admin"));

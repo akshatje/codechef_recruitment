@@ -25,17 +25,21 @@ router.get("/getQuestions",(req,res,next)=>{
 
 router.post("/answers",(req,res,next)=>{
     if(!req.session.user)
-        return next(new Error("Session expired"));
+        return res.redirect("/");
 
-    users.findOneAndUpdate({regno:"17BCE2009"},{
-        $push:{
-            test:{
-                question:req.body.question,
-                answer:req.body.answer
-            }
-        }
-    }).then(()=>{
-        return res.send("Done");
+    users.findOne({regno:req.session.user})
+    .then((u)=>{
+        if(!u)
+            return res.json({message:"User does not exist"})
+
+        if(u.test.length > 0)
+            return res.json({message:"User has already responded"})
+        
+        users.findOneAndUpdate({regno:req.session.user},{
+            test:req.body.answers
+        }).then(()=>{
+            return res.send("Done");
+        }).catch(next);
     }).catch(next);
 });
 
